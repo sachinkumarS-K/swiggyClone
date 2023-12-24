@@ -10,6 +10,7 @@ import ErrorPage from './component/ErrorPage.jsx'
 // import Resturant from './component/Resturant.jsx'
 import About from './pages/About.jsx'
 import Shimmer from './component/shimmer/Shimmer.jsx'
+import Loader from './component/loader/Loader.jsx'
 
 // const appRouter = createBrowserRouter([
 //   {
@@ -41,7 +42,7 @@ const appRouter = createBrowserRouter(
       <Route
         path="/Resturant/:id"
         element={
-          <Suspense fallback = {<Shimmer/>}>
+          <Suspense fallback = {<Loader/>}>
             <Resturant />
           </Suspense>
         }

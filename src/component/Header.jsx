@@ -85,7 +85,7 @@ const Header = ({ changeModeHandler  , mode}) => {
         <div className="flex items-center gap-3 lg:hidden md:hidden">
           <div>
             {mode === "light" ? (
-              <div className="hover:bg-green-500 bg-gray-600">
+              <div className="hover:bg-green-500 ">
                 {" "}
                 <MdDarkMode
                   className="text-3xl hover:bg-green-300 "

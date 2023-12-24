@@ -3,14 +3,13 @@ import { IoStar } from "react-icons/io5";
 import { MdTimelapse } from "react-icons/md";
 import { mediaUrl } from '../utils/constants';
 import { HiOutlineCurrencyRupee } from "react-icons/hi2";
-import { TbDiscount2 } from "react-icons/tb";
 const ResturantDetailsHeading = ({ data, offers }) => {
-     console.log(offers)
+     //console.log(data)
   return (
-    <div className="w-6/12 mx-auto mt-20  ">
-      <div className="w-full flex justify-between border-b border-gray-300  border-dashed pb-5">
+    <div className="lg:w-[55%]  w-[90%]  mx-auto mt-12  ">
+      <div className="w-full  flex justify-between border-b border-gray-300  border-dashed pb-5">
         <div>
-          <h1 className="text-lg font-bold"> {data.name} </h1>
+          <h1 className="lg:text-lg text-2xl py-3 font-bold"> {data.name} </h1>
           <p className="text-sm opacity-75">{data.cuisines.join(" , ")}</p>
           <div className="flex gap-2 text-sm opacity-75">
             <p> {data.areaName} ,</p>
@@ -39,10 +38,13 @@ const ResturantDetailsHeading = ({ data, offers }) => {
         </div>
       </div>
 
-      <div className="flex justify-evenly   mt-4">
+      <div className="flex justify-evenly  lg:flex-row flex-wrap-reverse mx-auto   mt-4">
         {offers.map((offer) => (
-          <div key={offer.info.offerIds[0]} className="shadow-lg px-2 py-3 ">
-            <div className="flex gap-2 items-center mb-1">
+          <div
+            key={offer.info.offerIds[0]}
+            className="shadow-lg min-w-[9rem] px-2 py-3 dark:shadow-inner dark:mb-1  dark:shadow-blue-500/50"
+          >
+            <div className="flex gap-2 items-center mb-2 ">
               <img
                 src={mediaUrl + offer.info.offerLogo}
                 alt=""
@@ -51,12 +53,14 @@ const ResturantDetailsHeading = ({ data, offers }) => {
               <p className="text-[12px]">{offer.info.header}</p>
             </div>
             <div className="flex gap-2 items-center">
-              <p className="text-[8px]">{offer.info.couponCode} |</p>
+              <p className="text-[8px] font-bold">{offer.info.couponCode} |</p>
               <p className="text-[8px]"> {offer.info.description} </p>
             </div>
           </div>
         ))}
       </div>
+
+      
     </div>
   );
 }
