@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import Loader from '../component/loader/Loader'
+import Loader from './loader/Loader'
 import { CgUnavailable } from "react-icons/cg";
 import { useParams } from 'react-router-dom';
 
 import getData from '../hooks/useGetData';
-import ResturantDetailsHeading from './ResturantDetailsHeading';
+import ResturantDetailsHeading from './ResturantMenuHeading';
 import ResturantCardAccordian from './ResturantCardAccordian';
-function Resturant() {
+function ResturantMenu() {
   const [data, setData] = useState(null);
+  const [showIndex, setShowIndex] = useState(0);
   const { id } = useParams();
   const [categoryData , setCategoryData] = useState([])
   async function fetchData() {
@@ -71,20 +72,27 @@ function Resturant() {
         offers={resOffers[0].card.card.gridElements.infoWithStyle.offers}
       />
 
-        <div className="lg:w-[55%] w-[90%]  mx-auto mt-12 bg-gray-100 overflow-hidden rounded-lg" >
-        {
-          categoryData.length !== 0 ?
-            categoryData.map((c, idx) => <ResturantCardAccordian key={idx} card={c.card.card} />) 
-            : (
-              <div className='flex items-center justify-center mt-[6rem] text-2xl gap-5 '> 
-                <CgUnavailable className='text-red-500 tex3xl' />
-                <h1>No item available</h1>
-              </div>
-            )
-        }
+      <div className="lg:w-[55%] w-[90%]  mx-auto mt-12 dark:bg-gradient-to-tr from-gray-300 to-slate-200 bg-gray-100 overflow-hidden rounded-lg">
+        {categoryData.length !== 0 ? (
+          categoryData.map((c, idx) => (
+            <ResturantCardAccordian
+              key={idx}
+              card={c.card.card}
+              showItem={idx === showIndex ? true : false}
+              setShowIndex={(flag) => {
+                flag ? setShowIndex(-1) : setShowIndex(idx);
+              }}
+            />
+          ))
+        ) : (
+          <div className="flex items-center justify-center mt-[6rem] text-2xl gap-5 ">
+            <CgUnavailable className="text-red-500 tex3xl" />
+            <h1>No item available</h1>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-export default Resturant
+export default ResturantMenu;

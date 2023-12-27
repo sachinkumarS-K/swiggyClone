@@ -30,7 +30,7 @@ import Loader from './component/loader/Loader.jsx'
 //   },
 // ]);
 
-const Resturant = lazy(() => import("./component/Resturant.jsx"));
+const Resturant = lazy(() => import("./component/ResturantMenu.jsx"));
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(

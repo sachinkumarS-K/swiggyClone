@@ -1,10 +1,13 @@
-import React , {useState} from 'react'
+import React , {useContext, useState} from 'react'
 import { NavLink } from 'react-router-dom';
 import Hamburger from "hamburger-react";
 import { MdDarkMode } from "react-icons/md";
 import { FiSun } from "react-icons/fi";
 import { useRef } from 'react';
-const Header = ({ changeModeHandler  , mode}) => {
+
+const Header = ({ changeModeHandler, mode }) => {
+ 
+
   const [isOpen, setOpen] = useState(false);
   const navRef = useRef(null);
   function clickHandler(flag) {
@@ -16,9 +19,9 @@ const Header = ({ changeModeHandler  , mode}) => {
   }
 
   return (
-    <nav className=" w-full z-10 dark:bg-[#0d0d0d] transition-all duration-1000 ease-in-out sticky top-0 bg-[whitesmoke] ">
+    <nav className=" w-full z-10 dark:bg-gradient-to-tr from-zinc-900 to-gray-700 transition-all duration-1000 ease-in-out sticky top-0 bg-[whitesmoke] ">
       <div className="flex justify-between w-10/12 mx-auto">
-        <div className="text-2xl  font-bold dark:text-green-500 text-gray-500 tracking-wider py-3  transition-all duration-1000 ease-in-out  hover:text-red-800">
+        <div className="text-2xl dark:text-green-500 drop-shadow-lg bg-gradient-to-r from-stone-500 to-stone-700 bg-clip-text text-transparent font-extrabold tracking-wider py-3  transition-all duration-1000 ease-in-out  hover:text-red-800">
           Sachin
         </div>
         <div className="lg:w-[47%] md:w-[66%]  w-[75%] py-3 align-middle my-auto">
@@ -73,11 +76,14 @@ const Header = ({ changeModeHandler  , mode}) => {
             </li>
             {mode === "light" ? (
               <MdDarkMode
-                className="text-2xl hover:bg-black hover:text-white transition-all duration-700 ease-in-out hover:rounded-full  "
+                className="text-2xl transition-all duration-700 ease-in-out hover:outline-2 hover:rounded-full hover:outline-blue-800 hover:scale-110 hover:outline-dashed hover:cursor-pointer  "
                 onClick={changeModeHandler}
               />
             ) : (
-              <FiSun className="text-3xl" onClick={changeModeHandler} />
+              <FiSun
+                className="text-3xl transition-all duration-700 ease-in-out hover:p-1 hover:scale-90 hover:outline-2 hover:rounded-full hover:outline-yellow-500 hover:outline-dotted hover:cursor-pointer"
+                onClick={changeModeHandler}
+              />
             )}
           </ul>
         </div>
@@ -88,12 +94,15 @@ const Header = ({ changeModeHandler  , mode}) => {
               <div className="hover:bg-green-500 ">
                 {" "}
                 <MdDarkMode
-                  className="text-3xl hover:bg-green-300 "
+                  className="text-3xl hover:bg-green-300 hover:cursor-pointer "
                   onClick={changeModeHandler}
                 />{" "}
               </div>
             ) : (
-              <FiSun className="text-3xl" onClick={changeModeHandler} />
+              <FiSun
+                className="text-3xl cursor-pointer"
+                onClick={changeModeHandler}
+              />
             )}
           </div>
 
@@ -116,7 +125,7 @@ const Header = ({ changeModeHandler  , mode}) => {
             className={({ isActive }) => {
               return isActive
                 ? "text-orange-700 border-b-2 pb-1 "
-                : "text-gray-700";
+                : "text-gray-700 " ;
             }}
           >
             Home
@@ -128,7 +137,7 @@ const Header = ({ changeModeHandler  , mode}) => {
             className={({ isActive }) => {
               return isActive
                 ? "text-orange-700 border-b-2 pb-1"
-                : "text-gray-700";
+                : "text-gray-700 dark:text-white";
             }}
           >
             DashBoard
@@ -140,7 +149,7 @@ const Header = ({ changeModeHandler  , mode}) => {
             className={({ isActive }) => {
               return isActive
                 ? "text-orange-700 border-b-2 pb-1"
-                : "text-gray-700";
+                : "text-gray-700 dark:text-white";
             }}
           >
             About Us
@@ -152,7 +161,7 @@ const Header = ({ changeModeHandler  , mode}) => {
             className={({ isActive }) => {
               return isActive
                 ? "text-orange-700 border-b-2 pb-1"
-                : "text-gray-700";
+                : "text-gray-700 dark:text-white";
             }}
           >
             Contact

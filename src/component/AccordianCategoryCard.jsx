@@ -3,9 +3,9 @@ import { FaIndianRupeeSign } from "react-icons/fa6";
 const AccordianCategoryCard = ({ itemCard }) => {
     
      return (
-       <div className="flex lg:justify-between lg:flow-row gap-3 place-items-start pt-2 mb-4 space-y-2 border-b pb-7">
-         <div className="w-full">
-           <h1 className="w-full text-left text-lg font-bold">
+       <div className="flex lg:justify-between flow-row gap-4 place-items-start pt-2 mb-4 space-y-2 border-b pb-7">
+         <div className="h-full w-full">
+           <h1 className="w-11/12 text-left text-lg font-bold">
              {" "}
              {itemCard.card.info.name}{" "}
            </h1>

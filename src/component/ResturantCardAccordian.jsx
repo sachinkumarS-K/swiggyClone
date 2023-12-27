@@ -3,15 +3,20 @@ import { FaMinus } from "react-icons/fa";
 import { TiPlus } from "react-icons/ti";
 
 import AccordianCategoryCard from './AccordianCategoryCard';
-const ResturantCardAccordian = ({ card }) => {
-     const [isOpen , setIsOpen] = useState(true)
-  console.log(card)
-  
+const ResturantCardAccordian = ({ card, showItem , setShowIndex }) => {
+  //console.log(card);
+ 
+console.log(showItem)
+  function clickHandler() {
+    setShowIndex(showItem)
+   
+}
+
   return (
-    <div className="bg-white  dark:bg-gray-700 px-3 py-3 mb-3 rounded-lg">
+    <div className="bg-white  dark:bg-gray-700 p-3 mb-3">
       <div
-        className={`flex justify-between items-center mb-5 ${
-          isOpen ? "font-bold" : " text-gray-500"
+        className={`flex justify-between h-full items-center mb-5 ${
+          showItem ? "font-bold" : " text-gray-500"
         } `}
       >
         <h1 className="dark:text-gray-300">
@@ -20,15 +25,15 @@ const ResturantCardAccordian = ({ card }) => {
           </p>
         </h1>
 
-        <button onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? (
+        <button onClick={clickHandler}>
+          {showItem ? (
             <FaMinus className="text-2xl" />
           ) : (
             <TiPlus className="text-2xl" />
           )}
         </button>
       </div>
-      <div className={`${isOpen ? "block" : "hidden"}`}>
+      <div className={`${showItem ? "block" : "hidden"}`}>
         {card.itemCards.map((itemCard) => (
           <AccordianCategoryCard
             key={itemCard.card.info.id}
@@ -39,6 +44,6 @@ const ResturantCardAccordian = ({ card }) => {
       {/* <div className="w-full mx-auto py-2 bg-gray-200 -mt-2 rounded-lg"></div> */}
     </div>
   );
-}
+};
 
 export default ResturantCardAccordian

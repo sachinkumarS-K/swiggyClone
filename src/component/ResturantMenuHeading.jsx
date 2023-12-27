@@ -16,11 +16,11 @@ const ResturantDetailsHeading = ({ data, offers }) => {
             <p> {data.sla.lastMileTravelString} </p>
           </div>
         </div>
-        <div className="shadow-lg rounded-md p-2">
+        <div className="shadow-lg rounded-md p-2  flex items-center">
           <div className="flex flex-col items-center gap-2">
             <div className="flex items-center gap-2">
               <IoStar className="text-green-500" />
-              <p> {data.avgRatingString} </p>
+              <p className='font-semibold'> {data.avgRatingString} </p>
             </div>
             <div className="w-full border"></div>
             <p className="text-[10px]"> {data.totalRatingsString} </p>
