@@ -4,10 +4,9 @@ import Hamburger from "hamburger-react";
 import { MdDarkMode } from "react-icons/md";
 import { FiSun } from "react-icons/fi";
 import { useRef } from 'react';
-
+import { BsCart2 } from "react-icons/bs";
+import { useSelector } from 'react-redux';
 const Header = ({ changeModeHandler, mode }) => {
- 
-
   const [isOpen, setOpen] = useState(false);
   const navRef = useRef(null);
   function clickHandler(flag) {
@@ -17,14 +16,14 @@ const Header = ({ changeModeHandler, mode }) => {
       ? (navRef.current.style.display = "flex")
       : (navRef.current.style.display = "none");
   }
-
+  const cart = useSelector((state) => state.cart)
   return (
     <nav className=" w-full z-10 dark:bg-gradient-to-tr from-zinc-900 to-gray-700 transition-all duration-1000 ease-in-out sticky top-0 bg-[whitesmoke] ">
-      <div className="flex justify-between w-10/12 mx-auto">
+      <div className="flex justify-between w-11/12 mx-auto">
         <div className="text-2xl dark:text-green-500 drop-shadow-lg bg-gradient-to-r from-stone-500 to-stone-700 bg-clip-text text-transparent font-extrabold tracking-wider py-3  transition-all duration-1000 ease-in-out  hover:text-red-800">
           Sachin
         </div>
-        <div className="lg:w-[47%] md:w-[66%]  w-[75%] py-3 align-middle my-auto">
+        <div className="lg:w-[48%] md:w-[66%]  w-[75%] py-3 align-middle my-auto">
           <ul className="lg:flex md:flex hidden  justify-between items-center">
             <li className="font-bold text-xl">
               <NavLink
@@ -74,6 +73,16 @@ const Header = ({ changeModeHandler, mode }) => {
                 Contact
               </NavLink>
             </li>
+            <NavLink to="/cart" className=" relative flex">
+              <BsCart2 className="text-slate-700 text-3xl dark:text-white" />
+              {cart.length > 0 && (
+                <p className="absolute top-[-8px] opacity-70 font-bold  right-[-7px] px-[7px]  bg-green-400 rounded-full">
+                  {" "}
+                  {cart.length}
+                </p>
+              )}
+            </NavLink>
+
             {mode === "light" ? (
               <MdDarkMode
                 className="text-2xl transition-all duration-700 ease-in-out hover:outline-2 hover:rounded-full hover:outline-blue-800 hover:scale-110 hover:outline-dashed hover:cursor-pointer  "
@@ -125,7 +134,7 @@ const Header = ({ changeModeHandler, mode }) => {
             className={({ isActive }) => {
               return isActive
                 ? "text-orange-700 border-b-2 pb-1 "
-                : "text-gray-700 " ;
+                : "text-gray-700 ";
             }}
           >
             Home

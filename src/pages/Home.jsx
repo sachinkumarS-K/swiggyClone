@@ -66,7 +66,7 @@ console.log(bannerData)
           part = part.split("=")[-1]
           console.log(part);
         })} */}
-      <div className=" overflow-hidden">
+      <div>
         {(
           <HomePageCarousel bannerData={bannerData} itemData={itemData} />
         )}

@@ -6,7 +6,6 @@ import AccordianCategoryCard from './AccordianCategoryCard';
 const ResturantCardAccordian = ({ card, showItem , setShowIndex }) => {
   //console.log(card);
  
-console.log(showItem)
   function clickHandler() {
     setShowIndex(showItem)
    
@@ -34,7 +33,7 @@ console.log(showItem)
         </button>
       </div>
       <div className={`${showItem ? "block" : "hidden"}`}>
-        {card.itemCards.map((itemCard) => (
+        {card.itemCards.map((itemCard , idx) => (
           <AccordianCategoryCard
             key={itemCard.card.info.id}
             itemCard={itemCard}

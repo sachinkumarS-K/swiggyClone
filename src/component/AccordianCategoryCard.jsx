@@ -1,9 +1,17 @@
 import { FaStar } from "react-icons/fa";
 import { FaIndianRupeeSign } from "react-icons/fa6";
+import { useDispatch, useSelector } from "react-redux";
+import { addItems , removeItem } from "../redux/cartSlice";
+import { useLocation } from "react-router-dom";
+
 const AccordianCategoryCard = ({ itemCard }) => {
-    
+  const cart = useSelector((state) => state.cart);
+  const location = useLocation();
+  //console.log(location.pathname)
+  //console.log(cart)
+  const dispatch = useDispatch()
      return (
-       <div className="flex lg:justify-between flow-row gap-4 place-items-start pt-2 mb-4 space-y-2 border-b pb-7">
+       <div className="flex lg:justify-between relative flow-row gap-4 place-items-start pt-2 mb-4 space-y-2 border-b pb-7">
          <div className="h-full w-full">
            <h1 className="w-11/12 text-left text-lg font-bold">
              {" "}
@@ -53,8 +61,24 @@ const AccordianCategoryCard = ({ itemCard }) => {
              className="w-full h-full object-cover "
              loading="lazy"
            />
+           {location.pathname === "/cart" ? (
+             <button
+               onClick={() => dispatch(removeItem(itemCard.card.info.id))}
+               className="absolute px-6 py-1 shadow-xl right-[30%] opacity-90 dark:text-black dark:font-semibold top-[75%] bg-green-50 rounded-xl"
+             >
+               {" "}
+               Remove
+             </button>
+           ) : (
+             <button
+               onClick={() => dispatch(addItems(itemCard))}
+               className="absolute px-6 py-1 shadow-xl right-[30%] opacity-90 dark:text-black dark:font-semibold top-[75%] bg-green-50 rounded-xl"
+             >
+               {" "}
+               ADD
+             </button>
+           )}
          </div>
-         
        </div>
      );
 }

@@ -11,7 +11,6 @@ import ErrorPage from './component/ErrorPage.jsx'
 import About from './pages/About.jsx'
 import Shimmer from './component/shimmer/Shimmer.jsx'
 import Loader from './component/loader/Loader.jsx'
-
 // const appRouter = createBrowserRouter([
 //   {
 //     path: "/",
@@ -31,13 +30,14 @@ import Loader from './component/loader/Loader.jsx'
 // ]);
 
 const Resturant = lazy(() => import("./component/ResturantMenu.jsx"));
-
+const Cart = lazy(() => import("./pages/Cart.jsx"))
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="*" element={<ErrorPage />}></Route>
       <Route path="" element={<Home />} />
       <Route path="about" element={<About name={"sachinnnn"} />} />
+      <Route path='cart' element = {<Suspense fallback = {<Loader />} > <Cart /> </Suspense>} />
       <Route path="contact" element={<Contact />} />
       <Route
         path="/Resturant/:id"
