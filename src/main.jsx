@@ -11,6 +11,7 @@ import ErrorPage from './component/ErrorPage.jsx'
 import About from './pages/About.jsx'
 import Shimmer from './component/shimmer/Shimmer.jsx'
 import Loader from './component/loader/Loader.jsx'
+import ItemDetails from './pages/ItemDetails.jsx'
 // const appRouter = createBrowserRouter([
 //   {
 //     path: "/",
@@ -39,6 +40,7 @@ const appRouter = createBrowserRouter(
       <Route path="about" element={<About name={"sachinnnn"} />} />
       <Route path='cart' element = {<Suspense fallback = {<Loader />} > <Cart /> </Suspense>} />
       <Route path="contact" element={<Contact />} />
+      <Route path="/item/:name/:id" element={<ItemDetails />} />
       <Route
         path="/Resturant/:id"
         element={

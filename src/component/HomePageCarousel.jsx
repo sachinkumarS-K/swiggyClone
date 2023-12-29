@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 const HomePageCarousel = ({ bannerData, itemData }) => {
   console.log(itemData)
   const settings = {
@@ -49,11 +50,17 @@ const HomePageCarousel = ({ bannerData, itemData }) => {
     ],
   };
   const sliderRef = useRef(null);
-  
+
+  async function clickHandler(data) {
+   
+    
+    
+  }
+
   return (
-    <div className="mt-5  ">
+    <div className="  ">
       <div className="">
-        <div className="font-bold flex items-center justify-between pb-3 lg:pr-8 mt-4 ">
+        <div className="font-bold flex items-center justify-between pb-3 lg:pr-8  ">
           <h1 className="lg:text-2xl font-bold lg:pl-2 ">
             What's on your mind?
           </h1>
@@ -63,12 +70,12 @@ const HomePageCarousel = ({ bannerData, itemData }) => {
           >
             <FaArrowLeft
               onClick={() => sliderRef.current.slickPrev()}
-              className="lg:text-4xl text-2xl bg-gray-300  rounded-full p-2 text-slate-600 hover:text-white hover:bg-slate-600 transition-all duration-1000 ease-in-out"
+              className="lg:text-4xl text-3xl bg-gray-300 rounded-full p-2 text-slate-600 hover:text-white hover:bg-slate-600 transition-all duration-1000 ease-in-out"
             />
 
             {
               <FaArrowRight
-                className="lg:text-4xl text-2xl bg-gray-300  rounded-full p-2 text-slate-600 hover:text-white hover:bg-slate-600 transition-all duration-1000 ease-in-out"
+                className="lg:text-4xl text-3xl bg-gray-300  rounded-full p-2 text-slate-600 hover:text-white hover:bg-slate-600 transition-all duration-1000 ease-in-out"
                 onClick={() => sliderRef.current.slickNext()}
               />
             }
@@ -79,16 +86,16 @@ const HomePageCarousel = ({ bannerData, itemData }) => {
           <Slider ref={sliderRef} {...settings}>
             {itemData &&
               itemData.map((data) => (
-                <div
+                <NavLink
                   key={data.id}
-                  onClick={() => getCategoryData(data.action.link)}
+                 to= {`/item/${data.action.text}/${data.action.link.split("collection_id=")[1].split("&")[0]}`}
                 >
                   <img
                     src={`${mediaUrl}${data.imageId}`}
                     className="pr-4 dark:pr-2 object-cover rounded-2xl overflow-hidden "
                     alt=""
                   />
-                </div>
+                </NavLink>
               ))}
           </Slider>
         </div>

@@ -15,10 +15,7 @@ const Home = () => {
   async function fetchData() {
     try {
       const res = await getData(resturantDataApi, "get");
-      const res2 = await axios.get(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.565704&lng=85.08308040000001&collection=83649&tags=layout_CCS_Biryni&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
-      );
-      console.log(res.data);
+      console.log(res.data)
       const resData = res.data.data.cards.filter(
         (c) => c.card?.card?.id === "restaurant_grid_listing"
       );
@@ -66,9 +63,9 @@ console.log(bannerData)
           part = part.split("=")[-1]
           console.log(part);
         })} */}
-      <div>
+      <div className=''>
         {(
-          <HomePageCarousel bannerData={bannerData} itemData={itemData} />
+         itemData && <HomePageCarousel bannerData={bannerData} itemData={itemData} />
         )}
       </div>
       <div className=" py-10 grid   lg:grid-cols-4 justify-items-center gap-8 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 ">
