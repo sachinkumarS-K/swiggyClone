@@ -64,26 +64,26 @@ const AccordianCategoryCard = ({ itemCard }) => {
            {location.pathname === "/cart" ? (
              <button
                onClick={() => dispatch(removeItem(itemCard.card.info.id))}
-               className="absolute px-6 py-1 shadow-xl right-[30%] opacity-90 dark:text-black dark:font-semibold top-[75%] bg-green-50 rounded-xl"
-             >
-               {" "}
-               Remove
-             </button>
-           ) : (
-             //  <button
-             //    onClick={() => dispatch(addItems(itemCard))}
-             //    className="absolute px-6 py-1 shadow-xl right-[30%] hover:bg-red-400 transition-all duration-1000 ease-in-out opacity-90 dark:text-black dark:font-semibold top-[75%] bg-green-50 rounded-xl"
-             //  >
-             //    {" "}
-             //    ADD
-             //  </button>
-             <button
-               onClick={() => dispatch(addItems(itemCard))}
-               className="absolute shadow-xl right-[25%] opacity-90 dark:text-black dark:font-semibold top-[75%] bg-green-50 rounded-xl"
+               className="absolute shadow-xl right-[10%] lg:right-[25%] opacity-90 dark:text-black dark:font-semibold top-[75%] bg-green-50 rounded-xl"
              >
                <div
                  href="#_"
-                 class="relative inline-flex items-center justify-start px-9 py-1 overflow-hidden text-xl transition-all bg-white rounded-lg hover:bg-white group"
+                 class="relative inline-flex items-center justify-start px-3 lg:px-9 py-1 overflow-hidden lg:text-xl transition-all bg-white rounded-lg hover:bg-white group"
+               >
+                 <span class="w-48 h-48 rounded rotate-[-40deg] bg-red-400 absolute bottom-0 left-0 -translate-x-full ease-in-out duration-700 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+                 <span class="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">
+                   REMOVE
+                 </span>
+               </div>
+             </button>
+           ) : (
+             <button
+               onClick={() => dispatch(addItems(itemCard))}
+               className="absolute shadow-xl right-[10%] lg:right-[25%] opacity-90 dark:text-black dark:font-semibold top-[75%] bg-green-50 rounded-xl"
+             >
+               <div
+                 href="#_"
+                 class="relative inline-flex items-center justify-start px-8 lg:px-9 py-1 overflow-hidden text-xl transition-all bg-white rounded-lg hover:bg-white group"
                >
                  <span class="w-48 h-48 rounded rotate-[-40deg] bg-red-400 absolute bottom-0 left-0 -translate-x-full ease-in-out duration-700 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
                  <span class="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">

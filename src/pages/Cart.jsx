@@ -9,6 +9,8 @@ const Cart = () => {
   const navigate = useNavigate()
   return (
     <div className="w-full min-h-full ">
+      <h1 className='text-center mt-5 text-3xl py-5 pb-3
+       font-bold tracking-wider '>Cart</h1>
       {cart.length > 0 ? (
         <div className="w-9/12 mx-auto pt-10">
           {cart.map((item, idx) => (
